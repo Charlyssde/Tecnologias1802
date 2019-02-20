@@ -12,3 +12,4 @@ nbdist/
 .nb-gradle/
 *.class
 # End of https://www.gitignore.io/api/netbeans
+/target/
