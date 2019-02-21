@@ -1,4 +1,4 @@
-/*
+﻿/*
  * 
  * UNIVERSIDAD VERACRUZANA
  * rcolorado@uv.mx
@@ -30,6 +30,8 @@ public class Main {
 
         System.out.println("********************");
         System.out.println("¿Cuánto vale un Bitcoin en mi divisa?");
+	System.out.println("********************");
+        System.out.println("Las divisas soportadas son seis");
         System.out.println("********************");
         System.out.println("Introduce el nombre de tu divisa (MXN, USD, CAD, EUR, ARS, VES):");
 
