@@ -57,6 +57,9 @@ public class Main {
         if (conn.getResponseCode() != 200) {
             throw new RuntimeException("Fallo : HTTP error code : " + conn.getResponseCode());
         }
+        else{
+            System.out.println("No podemos realizar la operacion debido al valor ingresado");
+        }
 
         InputStreamReader isr = new InputStreamReader(conn.getInputStream());
         TypeToken<List<DivisaJsonClass>> token = new TypeToken<List<DivisaJsonClass>>() {
