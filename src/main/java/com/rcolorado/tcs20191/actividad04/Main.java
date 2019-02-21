@@ -45,7 +45,6 @@ public class Main {
             if (lista.get(i).symbol.equals("localbtc" + divisa.toUpperCase())) {
                 System.out.println(lista.get(i+1).currency + " : " + lista.get(i+1).ask 
                         + " venta: " + lista.get(i+1).bid);
-
             }
         }
         
