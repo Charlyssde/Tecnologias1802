@@ -15,6 +15,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 import java.util.Scanner;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 
@@ -27,33 +30,34 @@ public class Main {
     public static void main(String[] args) throws IOException  {
 
         Scanner scanner = new Scanner(System.in);
+        Date date = new Date();
 
         System.out.println("********************");
         System.out.println("¿Cuánto vale un Bitcoin en mi divisa?");
-	System.out.println("********************");
-        System.out.println("Las divisas soportadas son seis");
         System.out.println("********************");
         String divisa;
         do{
-          System.out.println("Introduce el nombre de tu divisa (MXN, USD, CAD, EUR, ARS, VES):");
+        System.out.println("Introduce el nombre de tu divisa (MXN, USD, CAD, EUR, ARS, VES):");
 
         divisa = scanner.next();
         System.out.println("... espere un momento");
 
         List<DivisaJsonClass> lista = ConsultaBitCoinMarket();
 
-
+       DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+       
         for (int i  = 0; i < lista.size(); i++) {
             if (lista.get(i).symbol.equals("localbtc" + divisa.toUpperCase())) {
-                System.out.println(lista.get(i).currency + " : " + lista.get(i).ask 
-                        + " venta: " + lista.get(i).bid);
+                System.out.println(lista.get(i+1).currency + " : " + lista.get(i+1).ask+"La fecha de consulta es: "+dateFormat.format(date));
             }
         }
-          System.out.println("\n");
         }while(!divisa.toUpperCase().equals("NINGUNA"));
         
 
     }
+    
+    
+
     
     
     private static List<DivisaJsonClass> ConsultaBitCoinMarket() throws IOException {
