@@ -33,9 +33,11 @@ public class Main {
 	System.out.println("********************");
         System.out.println("Las divisas soportadas son seis");
         System.out.println("********************");
-        System.out.println("Introduce el nombre de tu divisa (MXN, USD, CAD, EUR, ARS, VES):");
+        String divisa;
+        do{
+          System.out.println("Introduce el nombre de tu divisa (MXN, USD, CAD, EUR, ARS, VES):");
 
-        String divisa = scanner.next();
+        divisa = scanner.next();
         System.out.println("... espere un momento");
 
         List<DivisaJsonClass> lista = ConsultaBitCoinMarket();
@@ -47,6 +49,8 @@ public class Main {
                         + " venta: " + lista.get(i).bid);
             }
         }
+          System.out.println("\n");
+        }while(!divisa.toUpperCase().equals("NINGUNA"));
         
 
     }
