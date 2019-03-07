@@ -15,6 +15,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 import java.util.Scanner;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 
@@ -27,6 +30,7 @@ public class Main {
     public static void main(String[] args) throws IOException  {
 
         Scanner scanner = new Scanner(System.in);
+        Date date = new Date();
 
         System.out.println("********************");
         System.out.println("¿Cuánto vale un Bitcoin en mi divisa?");
@@ -38,9 +42,11 @@ public class Main {
 
         List<DivisaJsonClass> lista = ConsultaBitCoinMarket();
 
+       DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+       
         for (int i  = 0; i < lista.size(); i++) {
             if (lista.get(i).symbol.equals("localbtc" + divisa.toUpperCase())) {
-                System.out.println(lista.get(i+1).currency + " : " + lista.get(i+1).ask);
+                System.out.println(lista.get(i+1).currency + " : " + lista.get(i+1).ask+"La fecha de consulta es: "+dateFormat.format(date));
             }
         }
         
@@ -56,9 +62,6 @@ public class Main {
 
         if (conn.getResponseCode() != 200) {
             throw new RuntimeException("Fallo : HTTP error code : " + conn.getResponseCode());
-        }
-        else{
-            System.out.println("No podemos realizar la operacion debido al valor ingresado");
         }
 
         InputStreamReader isr = new InputStreamReader(conn.getInputStream());
